@@ -65,11 +65,6 @@ jobs:
           submodules: recursive
           token: ${{ secrets.GH_PAT }}
           persist-credentials: true
-
-      - run: |
-          echo "GH_PAT length: ${#GH_PAT}"
-        env:
-          GH_PAT: ${{ secrets.GH_PAT }}
           
       - name: Install Syft
         uses: anchore/sbom-action/download-syft@v0
@@ -90,7 +85,7 @@ jobs:
 
   generate-bridge:
     uses: ./.github/workflows/bridge.yml
-
+    secrets: inherit
   build-RustDeskTempTopMostWindow:
     uses: ./.github/workflows/third-party-RustDeskTempTopMostWindow.yml
     strategy:
