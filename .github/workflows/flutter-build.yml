@@ -64,7 +64,8 @@ jobs:
         with:
           submodules: recursive
           token: ${{ secrets.GH_PAT }}
-          
+          persist-credentials: true
+
       - name: Install Syft
         uses: anchore/sbom-action/download-syft@v0
 
